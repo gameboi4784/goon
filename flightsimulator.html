@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<!-- saved from url=(0091)https://unblocked-games.s3.amazonaws.com/games/2023/unity2/real-flight-simulator/index.html -->
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>Real Flight Simulator - FreezeNova</title>
+	
+    <link rel="shortcut icon" href="https://unblocked-games.s3.amazonaws.com/games/2023/unity2/real-flight-simulator/TemplateData/favicon.ico">
+    <link rel="stylesheet" href="./flightsimulator_files/style.css">
+	
+    <script async="" src="./flightsimulator_files/saved_resource"></script><script src="./flightsimulator_files/UnityProgress.js.download"></script>  
+    <script src="./flightsimulator_files/UnityLoader.js.download"></script>
+
+	
+<style type="text/css">
+	body {
+	  overflow: hidden;
+	}
+</style>
+
+	<link rel="canonical" href="https://unblocked-games.s3.amazonaws.com/real-flight-simulator.html">
+	
+	<script src="./flightsimulator_files/game.js.download"></script>
+
+
+	<!-- Google tag (gtag.js) -->
+	<script async="" src="./flightsimulator_files/js"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-GXS04HS5MX');
+	</script>
+	
+
+	<script src="./flightsimulator_files/promo.js.download" async=""></script>
+	<script type="text/javascript" async="">
+		!function(e, t) {
+			var a = e.createElement("script"),
+				m = e.getElementsByTagName("script")[0];
+
+			a.async = 1;
+			a.src = t;
+
+			a.onload = function() {
+				console.log("Dynamic script loaded wg");
+				if (typeof window.syncPromoManager === "function") window.syncPromoManager(false);
+				window.wgLoaded = 1;
+			};
+
+			a.onerror = function() {
+				console.error("Failed to load wg");
+				if (typeof window.syncPromoManager === "function") window.syncPromoManager(true);
+				window.wgLoaded = 2;
+			};
+
+			m.parentNode.insertBefore(a, m);
+		}(document, "https://universal.wgplayer.com/tag/?lh=" + window.location.hostname + "&wp=" + window.location.pathname + "&ws=" + window.location.search);
+	</script>
+	
+
+	<script>
+	
+	function SubmitLeaderboardScore(newScore)
+	{
+		
+	}
+	
+	function GetLeaderboardEntries()
+	{
+		
+	}
+	
+	function InitApi(_appId) 
+    {
+		var dateNow = new Date();
+		var secondsSinceEpoch = Math.round(dateNow.getTime() / 1000);
+		
+		console.log('InitApi');
+		
+		window.callTime = secondsSinceEpoch - 181;
+    }
+	
+	function InitExternEval(_appId) 
+    {
+		console.log("InitExternEval");
+		
+		ExternEval();
+    }
+    
+    function ExternEval() 
+    {
+		console.log("ExternEval");
+		
+		var dateNow = new Date();
+		var secondsSinceEpoch = Math.round(dateNow.getTime() / 1000);
+		
+		if (window.callTime != undefined && 
+			secondsSinceEpoch - window.callTime > 180)
+		{
+			console.log('ExternEval 2');
+			
+			window.callTime = secondsSinceEpoch;
+			
+			if (typeof preroll !== 'undefined')
+			{
+				if (window[preroll.config.loaderObjectName] != undefined)
+				{
+					gameInstance.SendMessage('FreezeNovaAPI', 'AdMessage', 'onOpen');
+				
+					try {
+						window[preroll.config.loaderObjectName].refetchAd(ExternEvalResumeGame);
+					}
+					catch(err) {
+						console.log(err.message);
+						gameInstance.SendMessage('FreezeNovaAPI', 'AdMessage', 'onClose');
+					}
+				}
+			}
+		}
+		
+    }
+	
+	function ExternEvalResumeGame()
+	{
+		console.log("ExternEvalResumeGame");
+	
+		gameInstance.SendMessage('FreezeNovaAPI', 'AdMessage', 'onClose');
+	}
+	
+	function PreloadRewarded() 
+	{
+		console.log("PreloadRewarded");
+	
+		if (window.rewardedCallbacks == undefined)
+		{
+			window.rewardedCallbacks = true;
+			
+			try {
+				window[window.preroll.config.loaderObjectName].registerRewardCallbacks({
+					onReady:RewardedReady, 
+					onSuccess:RewardedSuccess, 
+					onFail:RewardedFail,
+					onClose:RewardedClose
+				});
+			}
+			catch(err) {
+				console.log(err.message);
+			}
+		}
+	}
+		
+	function ShowRewarded() 
+	{
+		console.log("ShowRewarded");
+	
+		if (typeof preroll !== 'undefined')
+		{
+			if (window.rewardedCallbacks == undefined)
+			{
+				PreloadRewarded();
+			}
+		
+			if (window[preroll.config.loaderObjectName] != undefined)
+			{
+				gameInstance.SendMessage('FreezeNovaAPI', 'AdMessage', 'onOpen');
+			
+				try {
+					window[preroll.config.loaderObjectName].showRewardAd();
+				}
+				catch(err) {
+					console.log(err.message);
+					gameInstance.SendMessage('FreezeNovaAPI', 'AdMessage', 'onClose');
+				}
+			}
+		}
+	
+	}
+	
+	function RewardedReady()
+	{
+		console.log("RewardedReady");
+		
+		if (window.rewardedCount == undefined)
+		{
+			window.rewardedCount = 1;
+			window.gameInstance.SendMessage('FreezeNovaAPI', 'RewardedReady');
+		}
+		else{
+			window.rewardedCount = window.rewardedCount + 1;
+			//setTimeout(function(){ window.gameInstance.SendMessage('FreezeNovaAPI', 'RewardedReady'); }, 30000);
+			window.gameInstance.SendMessage('FreezeNovaAPI', 'RewardedReady');
+		}
+		
+	}
+	
+	function RewardedSuccess()
+	{
+		console.log("RewardedSuccess");
+		gameInstance.SendMessage('FreezeNovaAPI', 'AdMessage', 'RewardedOnRewarded');
+		//gameInstance.SendMessage('FreezeNovaAPI', 'AdMessage', 'onClose');
+	}
+	
+	function RewardedFail()
+	{
+		console.log("RewardedFail");
+		gameInstance.SendMessage('FreezeNovaAPI', 'AdMessage', 'RewardedOnFail');
+		//gameInstance.SendMessage('FreezeNovaAPI', 'AdMessage', 'onClose');
+	}
+	
+	function RewardedClose()
+	{
+		console.log("RewardedClose");
+		gameInstance.SendMessage('FreezeNovaAPI', 'AdMessage', 'onClose');
+	}
+	
+	InitApi(0);
+	
+	
+	</script>
+
+	
+	<script>
+	
+	function FitScreen(){
+       var w = 1280;
+       var h = 720;
+	   
+       var availWidth = window.innerWidth;
+       var availHeight = window.innerHeight;
+	   
+       var canvas = document.getElementById("#canvas");
+       if(availWidth/availHeight>w/h){
+         height = availHeight;
+         width = (height*w/h);
+      }else{
+         width = availWidth;
+         height = width*h/w;
+      }
+	  
+      canvas.width = width;
+      canvas.height = height;
+	  
+       document.getElementById("gameContainer").style.width=width + "px";
+       document.getElementById("gameContainer").style.height=height + "px";
+	   
+    }
+	
+	var gameInstance = UnityLoader.instantiate("gameContainer", "Build/game.json", {onProgress: UnityProgress});
+	
+	</script>
+
+  <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      #ad-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8); /* Dark overlay */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      #ad-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Background dimming */
+        z-index: 1; /* Keep behind iframe */
+      }
+
+      #ad-container iframe {
+        width: 80%;
+        height: 80%;
+        border: none;
+        border-radius: 8px;
+        overflow: hidden;
+        z-index: 2; /* On top of the overlay */
+      }
+
+      #skip-button {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: 2px solid white; /* Add a white border for the box effect */
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 3; /* On top of iframe */
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+      }
+	  
+	  #skip-button:hover {
+		background-color: white;
+		color: black;
+		transition: background-color 0.3s, color 0.3s;
+	}
+
+      .adhidden {
+        display: none;
+      }
+    </style><style>
+      @keyframes rotate360 {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    
+        @font-face {
+            font-family: 'Amazon Ember';
+            src: url("chrome-extension://cgdjpilhipecahhcilnafpblkieebhea/fonts/AmazonEmber_Rg.ttf");
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap; 
+        }
+        @font-face {
+            font-family: 'Amazon Ember';
+            src: url("chrome-extension://cgdjpilhipecahhcilnafpblkieebhea/fonts/AmazonEmber_Bd.ttf");
+            font-weight: bold;
+            font-style: normal;
+        }
+    </style></head>
+  <body onfocus="FitScreen();" onload="FitScreen();" onresize="FitScreen();" style="width:100%; height:100%">
+    <div class="webgl-content">
+      <div id="gameContainer" style="width: 1258.67px; height: 708px; padding: 0px; margin: 0px; border: 0px; position: relative; background: rgb(35, 31, 32);"><canvas id="#canvas" style="width: 100%; height: 100%;" width="1258" height="708"></canvas><div class="logo Dark"></div><div class="progress Dark"><div class="empty" style="width: 25.8877%;"></div><div class="full" style="width: 74.1123%;"></div></div></div>
+    </div>
+  
+<script src="blob:https://unblocked-games.s3.amazonaws.com/a3bfabec-1dbb-46a1-8b10-093e9186ab9e"></script><script src="blob:https://unblocked-games.s3.amazonaws.com/bbef3b2f-f29e-4915-b4eb-3e6cf61cbb85"></script></body></html>
