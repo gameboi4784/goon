@@ -1,26 +1,28 @@
-<html lang="en-us"><head>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
     <base href="https://cdn.jsdelivr.net/gh/1e295a49108e716ce8ab7eba0c8dca7d/9326265e4f1b14345a3bdab6f8ffad0e2e7ab3fda920c5f0f095f77359af00aeae22591c5bc4914c84c13d99eb62091d7ce7@main/utweb/play/">
-    </head><body oncontextmenu="return false;">
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <body oncontextmenu="return false;">
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <link rel="icon" type="x-icon" href="https://cdn.jsdelivr.net/gh/1e295a49108e716ce8ab7eba0c8dca7d/9326265e4f1b14345a3bdab6f8ffad0e2e7ab3fda920c5f0f095f77359af00aeae22591c5bc4914c84c13d99eb62091d7ce7@main/utweb/fav.ico">
     <title>UNDERTALE</title>
     <link rel="stylesheet" href="ut.css">
     <script src="jszip.min.js"></script>
-  
+  </head>
 
-  
+  <body>
     <div id="game-container">
-      <canvas class="emscripten active" id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1" width="640" height="480" style="cursor: auto; display: block; height: 208.5px; width: 278px;"></canvas>
-      <div class="loading hidden-ui">
-        <div class="spinner" id="spinner" style="display: none;"></div>
+      <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1"></canvas>
+      <div class="loading">
+        <div class="spinner" id="spinner"></div>
         <noscript class="nsmessage">This requires JavaScript and WebAssembly to be enabled in your browser.</noscript>
-        <div class="emscripten" id="status"></div>
-        <progress value="0" max="1" id="progress" hidden=""></progress>
+        <div class="emscripten" id="status">Loading...</div>
+        <progress value="0" max="100" id="progress" hidden="1"></progress>
       </div>
       <div class="output-container" id="output-container">
       <button class="output-button" id="fullscreen" title="Toggle Fullscreen">Toggle Fullscreen?</button>
@@ -31,8 +33,8 @@
       <input id="colorpicker" type="color" onchange="changecolor(this)" title="Changes color of the canvas' surrounding areas">
       <textarea id="output"></textarea>
     </div>
-    <button id="closeUIButton" onclick="hideUI()" style="display: none;">×</button>
-    <div id="message-container" class="hidden-ui">
+    <button id="closeUIButton" onclick="hideUI()">&times;</button>
+    <div id="message-container">
       <div id="messages"></div>
     </div>
   </div>
@@ -44,9 +46,9 @@
   </div>
   <div id="saveManagerModal" class="save-manager-modal">
     <div class="save-manager-content">
-      <span class="close-button" onclick="window.SAVEManager.closeSAVEManager()">×</span>
+      <span class="close-button" onclick="window.SAVEManager.closeSAVEManager()">&times;</span>
       <div class="save-manager-content2">
-        <span class="minimize-button" onclick="window.SAVEManager.closeSMnoreload()">‐</span>
+        <span class="minimize-button" onclick="window.SAVEManager.closeSMnoreload()">&dash;</span>
         <h2>SAVE File Manager!</h2>
         <button class="output-button" onclick="toggleclear_site_cache()">Wipe all of your SAVEs?</button>
         <button id="exportAllBtn" class="output-button" onclick="SAVEManager.exportAllToZip()">Export all SAVEs to ZIP?</button>
@@ -56,7 +58,7 @@
         </div>
         <div class="file-upload-section">
           <h3>Import Save Files?</h3>
-          <input type="file" id="uploadFileInput" accept="*" multiple="">
+          <input type="file" id="uploadFileInput" accept="*" multiple>
           <input type="text" id="uploadFileNameInput" placeholder="Enter the corresponding filename (e.g., filech1_0, dr.ini / for single file only)">
           <button onclick="SAVEManager.handleUpload()">Select File(s)!</button>
         </div>
@@ -1360,6 +1362,5 @@
     </script>
     <script src="controller.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/1e295a49108e716ce8ab7eba0c8dca7d/9326265e4f1b14345a3bdab6f8ffad0e2e7ab3fda920c5f0f095f77359af00aeae22591c5bc4914c84c13d99eb62091d7ce7@main/utweb/verif.js"></script>
-
-
-</div><script src="runner.js"></script></body></html>
+</body>
+</html>
