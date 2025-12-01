@@ -1,0 +1,146 @@
+<html lang="en-us"><head></head><body><module>
+<moduleprefs title="Google.com">
+<content type="html"><!--[CDATA[
+
+
+<!--Yandex games Template---->
+
+
+
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>google.com</title>
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/nihathatpsin/alamm@main/TemplateData/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nihathatpsin/alamm@main/TemplateData/style.css">
+<!-- Yandex Games SDK -->
+<script src="https://cdn.jsdelivr.net/gh/nihathatpsin/alamm@main/v2.82dfa5a2e329cf0eb833.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/nihathatpsin/alamm@main/Web Audio/howler.min.js"></script> <!-- webAudio lib -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/nihathatpsin/alamm@main/Scripts/Version.js"></script>
+
+
+<div id="unity-container" style="position: absolute; width: 100%; height: 100%; left: 0%; top: 0%;">
+<canvas id="unity-canvas" style="position: absolute; width: 100%; height: 100%; cursor: default;" width="664" height="885"></canvas>
+<div id="unity-loading-bar" style="display: none;">
+<div id="unity-logo"></div>
+<div id="unity-progress-bar-empty">
+<div id="unity-progress-bar-full" style="width: 100%;"></div>
+</div>
+</div>
+<div id="unity-warning"></div>
+</div>
+<script>
+    var sources = {};// Dictonary webAudio sources
+    var sourcesPlayOneShot = {};
+    var sdk;
+    var player = null;
+    var MyGameInstance = null;
+    //var IconContener = document.querySelector("#IconContener");
+    //IconContener.style.display = "block";
+    //simulateLoading();
+   var loadingBar = document.querySelector("#unity-loading-bar");
+   loadingBar.style.display = "block";
+
+    YaGames.init().then(ysdk => {
+        console.log('Yandex SDK initialized');
+        window.ysdk = ysdk;
+        sdk = ysdk;
+        sdk.getPlayer().then(_player => {
+            player = _player;
+            console.log('Player initialized');
+        }).catch(err => {
+            console.error("Error initializing Player\n" + err);
+        });
+
+        initializeUnity();
+        sdk.adv.showFullscreenAdv();
+    });
+
+    function initializeUnity() {
+        var container = document.querySelector("#unity-container");
+        var canvas = document.querySelector("#unity-canvas");
+        var loadingBar = document.querySelector("#unity-loading-bar");
+        var progressBarFull = document.querySelector("#unity-progress-bar-full");
+        var warningBanner = document.querySelector("#unity-warning");
+
+        function unityShowBanner(msg, type) {
+            function updateBannerVisibility() {
+                warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+            }
+
+            var div = document.createElement('div');
+            div.innerHTML = msg;
+            warningBanner.appendChild(div);
+            if (type == 'error') div.style = 'background: red; padding: 10px;';
+            else {
+                if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+                setTimeout(function () {
+                    warningBanner.removeChild(div);
+                    updateBannerVisibility();
+                }, 5000);
+            }
+            updateBannerVisibility();
+        }
+
+        var buildUrl = "https://cdn.jsdelivr.net/gh/nihathatpsin/alamm@main/Build";
+        var loaderUrl = buildUrl + "/Chat2.loader.js";
+        var config = {
+        dataUrl: buildUrl + "/Chat2.data.unityweb",
+        frameworkUrl: buildUrl + "/Chat2.framework.js.unityweb",
+        codeUrl: buildUrl + "/Chat2.wasm.unityweb",
+        streamingAssetsUrl: "https://cdn.jsdelivr.net/gh/nihathatpsin/alamm@main/StreamingAssets",
+        companyName: "Stera",
+        productName: "CrashRacing",
+        productVersion: "0.1",
+        showBanner: unityShowBanner,
+      };
+
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            var meta = document.createElement('meta');
+            meta.name = 'viewport';
+            meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+            document.getElementsByTagName('head')[0].appendChild(meta);
+            container.className = "unity-mobile";
+
+            canvas.style.width = "100%";
+            canvas.style.height = "100%";
+
+            var tabsHeight = window.innerHeight - canvas.clientHeight;
+            canvas.style.marginTop = tabsHeight + "px";
+
+        } else {
+            canvas.style.width = "100%";
+            canvas.style.height = "100%";
+        }
+
+
+
+        var script = document.createElement("script");
+        script.src = loaderUrl;
+        script.onload = () => {
+            createUnityInstance(canvas, config, (progress) => {
+                progressBarFull.style.width = 100 * progress + "%";
+            }).then((unityInstance) => {
+                MyGameInstance = unityInstance;
+                loadingBar.style.display = "none";
+            }).catch((message) => {
+                alert(message);
+            });
+        };
+        document.body.appendChild(script);
+    }
+    
+            window.addEventListener("unhandledrejection", function(event) {
+            console.warn("Hata es geçildi:", event.reason);
+            event.preventDefault();
+        });
+
+</script>
+
+
+
+
+
+
+]]&gt;</content>
+</moduleprefs></module><script src="https://cdn.jsdelivr.net/gh/nihathatpsin/alamm@main/Build/Chat2.loader.js"></script><script src="blob:https://458373948-atari-embeds.googleusercontent.com/d9975fe8-f868-4f62-bbd2-65a54c396028"></script></body></html>
