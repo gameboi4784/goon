@@ -528,15 +528,17 @@
     </script>
     <script>
         async function loadthingy(url) {
-          const res = await fetch(`${url}?t=${Date.now()}`);
-          const html = await res.text();
-          const newTab = window.open('about:blank');
-          newTab.document.open();
-          newTab.document.write(html);
-          newTab.document.close();
-          newTab.focus();
-          window.close();
-        }
+            async function loadthingy(url) {
+            const res = await fetch(`${url}?t=${Date.now()}`);
+            const html = await res.text();
+
+    // Put the fetched HTML into the iframe inside your popup
+            const frame = document.getElementById("gameFrame");
+            frame.srcdoc = html;   // srcdoc lets you inject HTML directly
+
+    // If you want to replace the iframe’s URL instead of raw HTML:
+    // 
+            }
       function showToggleMessage(button, message) {
         const oldMessage = document.querySelector('.toggle-feedback');
         if (oldMessage) oldMessage.remove();
@@ -1223,6 +1225,7 @@
       });
     </script>
     <script async="" type="text/javascript" src="runner.js"></script>
+
 
 
 </div></body></html>
